@@ -43,21 +43,21 @@ From now commands should be available in your application.
 
 ```
 $ cd project
-$ php app/console teryt:download:territorial-division
-$ php app/console teryt:download:places-dictionary
-$ php app/console teryt:download:places
-$ php app/console teryt:download:streets
+$ symfony console teryt:download:territorial-division
+$ symfony console teryt:download:places-dictionary
+$ symfony console teryt:download:places
+$ symfony console teryt:download:streets
 ```
 
 All above commands have an additional argument ``--target``, that allows you to download files in a place other than
-``"%kernel.root_dir%/teryt/`` (default download target folder).
+``"%kernel.project_dir%/teryt/`` (default download target folder).
 
 ## Import data from XML files to database
 
 First you need to unzip the downloaded .zip files.
 
 ```bash
-$ cd project/app/teryt
+$ cd project/teryt
 $ unzip territorial-division.zip
 $ unzip places-dictionary.zip
 $ unzip places.zip
@@ -68,10 +68,10 @@ It is important to execute following commands in the given order:
 
 ```bash
 $ cd project
-$ php app/console doctrine:schema:update --force
-$ php app/console doctrine:fixtures:load
-$ php app/console teryt:import:territorial-division app/teryt/TERC.xml
-$ php app/console teryt:import:places-dictionary app/teryt/WMRODZ.xml
-$ php app/console teryt:import:places app/teryt/SIMC.xml
-$ php app/console teryt:import:streets app/teryt/ULIC.xml
+$ symfony console doctrine:schema:update --force
+$ symfony console doctrine:fixtures:load
+$ symfony console teryt:import:territorial-division teryt/TERC.xml
+$ symfony console teryt:import:places-dictionary teryt/WMRODZ.xml
+$ symfony console teryt:import:places teryt/SIMC.xml
+$ symfony console teryt:import:streets teryt/ULIC.xml
 ```
